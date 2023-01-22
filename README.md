@@ -1,2 +1,2 @@
-# MalmstoneCalculator
-FFXIV PVP Malmstone XP Calculator
+# FFXIV PVP Malmstone XP Calculator
+Coming soon!
