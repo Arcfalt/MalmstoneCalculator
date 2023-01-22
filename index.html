@@ -12,7 +12,7 @@
 
 <body>
 	<div class="container">
-		<h1>Malmstone Calculator</h1>
+		<div class="d-flex justify-content-center"><h1>Malmstone Calculator</h1></div>
 		<hr/>
 		<form>
 			<div class="form-row">
@@ -21,15 +21,15 @@
 					<input type="number" class="form-control" id="inputRank" value = "1">
 				</div>
 				<div class="form-group col-md-6">
-					<label for="inputExp">Current XP to Next Rank</label>
-					<input type="number" class="form-control" id="inputExp" value = "0">
+					<label for="inputTarget">Target Rank</label>
+					<input type="number" class="form-control" id="inputTarget" value = "25">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputTarget">Target Rank</label>
-				<input type="number" class="form-control" id="inputTarget" value = "25">
+				<label for="inputExp">Current XP to Next Rank</label>
+				<input type="number" class="form-control" id="inputExp" value = "0">
 			</div>
-			<button type="submit" class="btn btn-primary">Calculate</button>
+			<!--<div class="d-flex justify-content-center"><button type="submit" class="btn btn-primary">Calculate</button></div>-->
 		</form>
 		<!--<button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 			Edit XP Values
@@ -56,14 +56,14 @@
 					<input type="number" class="form-control" id="resultCcWin" placeholder="Not Calculated">
 				</div>
 				<div class="form-group col-md-6">
-					<label for="resultCcLoss">Crystalline Conflict Losses</label>
-					<input type="number" class="form-control" id="resultCcLoss" placeholder="Not Calculated">
+					<label for="resultFlWin">Frontline Wins</label>
+					<input type="number" class="form-control" id="resultFlWin" placeholder="Not Calculated">
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="resultFlWin">Frontline Wins</label>
-					<input type="number" class="form-control" id="resultFlWin" placeholder="Not Calculated">
+					<label for="resultCcLoss">Crystalline Conflict Losses</label>
+					<input type="number" class="form-control" id="resultCcLoss" placeholder="Not Calculated">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="resultFlLoss">Frontline Losses</label>
@@ -71,6 +71,8 @@
 				</div>
 			</div>
 		</fieldset>
+		<hr/>
+		<div class="d-flex justify-content-center"><a href="https://github.com/Arcfalt/MalmstoneCalculator">View Source</a></div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
