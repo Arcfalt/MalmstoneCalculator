@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>FFXIV Malmstone PVP XP Calculator</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+		integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Malmstone Calculator</h1>
+		<hr/>
+		<form>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="inputRank">Current Rank</label>
+					<input type="number" class="form-control" id="inputRank" value = "1">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="inputExp">Current XP to Next Rank</label>
+					<input type="number" class="form-control" id="inputExp" value = "0">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputTarget">Target Rank</label>
+				<input type="number" class="form-control" id="inputTarget" value = "25">
+			</div>
+			<button type="submit" class="btn btn-primary">Calculate</button>
+		</form>
+		<!--<button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+			Edit XP Values
+		</button>
+		<div class="collapse" id="collapseExample">
+			<div class="form-group">
+				<label for="ccWin">Crystalline Conflict Win</label>
+				<input type="number" class="form-control" id="ccWin">
+			</div>
+			<div class="form-group">
+				<label for="ccLoss">Crystalline Conflict Loss</label>
+				<input type="number" class="form-control" id="ccLoss">
+			</div>
+		</div>-->
+		<hr/>
+		<fieldset disabled>
+			<div class="form-group">
+				<label for="resultXp">XP Required</label>
+				<input type="number" class="form-control" id="resultXp" placeholder="Not Calculated">
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="resultCcWin">Crystalline Conflict Wins</label>
+					<input type="number" class="form-control" id="resultCcWin" placeholder="Not Calculated">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="resultCcLoss">Crystalline Conflict Losses</label>
+					<input type="number" class="form-control" id="resultCcLoss" placeholder="Not Calculated">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="resultFlWin">Frontline Wins</label>
+					<input type="number" class="form-control" id="resultFlWin" placeholder="Not Calculated">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="resultFlLoss">Frontline Losses</label>
+					<input type="number" class="form-control" id="resultFlLoss" placeholder="Not Calculated">
+				</div>
+			</div>
+		</fieldset>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+		crossorigin="anonymous"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>
