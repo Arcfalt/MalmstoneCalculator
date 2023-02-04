@@ -75,6 +75,29 @@ function calcResults() {
 	$('#resultFlLoss').val(Math.ceil(xp / FL_LOSS));
 }
 
+function addXp(amount) {
+	let inputRank = parseInt($('#inputRank').val());
+	if (inputRank < 1) $('#inputRank').val(1);
+	else if (inputRank > 9999) $('#inputRank').val(9999);
+	let inputExp = parseInt($('#inputExp').val());
+	if (inputExp < 0) $('#inputExp').val(0);
+	else if (inputExp > 20000) $('#inputExp').val(20000);
+	inputExp += amount;
+	while (getXpForRank(inputRank) < inputExp) {
+		inputExp -= getXpForRank(inputRank);
+		inputRank++;
+	}
+	$('#inputExp').val(inputExp);
+	$('#inputRank').val(inputRank);
+	calcResults();
+}
+
+function getXpForRank(rank) {
+	if (rank >= RANKS.length) return RANKS[RANKS.length - 1];
+	if (rank < 0) return 0;
+	return RANKS[rank];
+}
+
 $('form').submit(function (event) {
     event.preventDefault();
     calcResults();
@@ -83,5 +106,10 @@ $('form').submit(function (event) {
 $('#inputRank').on('input', () => validateAndCalcResults());
 $('#inputExp').on('input', () => validateAndCalcResults());
 $('#inputTarget').on('input', () => validateAndCalcResults());
+
+$('#addCcWin').on('click', () => addXp(CC_WIN));
+$('#addCcLoss').on('click', () => addXp(CC_LOSS));
+$('#addFlWin').on('click', () => addXp(FL_WIN));
+$('#addFlLoss').on('click', () => addXp(FL_LOSS));
 
 validateAndCalcResults();
