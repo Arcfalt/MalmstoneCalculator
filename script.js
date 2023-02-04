@@ -55,6 +55,9 @@ function validateAndCalcResults() {
 	const inputTarget = parseInt($('#inputTarget').val());
 	if (inputTarget < 1) $('#inputTarget').val(1);
 	else if (inputTarget > 9999) $('#inputTarget').val(9999);
+	localStorage.setItem("inputRank", inputRank);
+	localStorage.setItem("inputExp", inputExp);
+	localStorage.setItem("inputTarget", inputTarget);
 	calcResults();
 }
 
@@ -111,5 +114,12 @@ $('#addCcWin').on('click', () => addXp(CC_WIN));
 $('#addCcLoss').on('click', () => addXp(CC_LOSS));
 $('#addFlWin').on('click', () => addXp(FL_WIN));
 $('#addFlLoss').on('click', () => addXp(FL_LOSS));
+
+let inputRank = localStorage.getItem("inputRank");
+if (inputRank !== null) $('#inputRank').val(inputRank);
+let inputExp = localStorage.getItem("inputExp");
+if (inputExp !== null) $('#inputExp').val(inputExp);
+let inputTarget = localStorage.getItem("inputTarget");
+if (inputTarget !== null) $('#inputTarget').val(inputTarget);
 
 validateAndCalcResults();
