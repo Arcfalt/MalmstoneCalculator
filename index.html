@@ -31,10 +31,15 @@
 			</div>
 		</form>
 		<div class="row">
-			<div class="mx-auto"><button type="button" class="btn btn-primary" id="addCcWin">+CC Win</button>
-			<button type="button" class="btn btn-primary" id="addCcLoss">+CC Loss</button></div>
-			<div class="mx-auto"><button type="button" class="btn btn-primary" id="addFlWin">+FL Win</button>
-			<button type="button" class="btn btn-primary" id="addFlLoss">+FL Loss</button></div>
+			<div class="mx-auto">
+				<button type="button" class="btn btn-primary" id="addCcWin">+CC Win</button>
+				<button type="button" class="btn btn-primary" id="addCcLoss">+CC Loss</button>
+			</div>
+			<div class="mx-auto">
+				<button type="button" class="btn btn-primary" id="addFlWin">+FL 1st</button>
+				<button type="button" class="btn btn-primary" id="addFlMid">+FL 2nd</button>
+				<button type="button" class="btn btn-primary" id="addFlLoss">+FL 3rd</button>
+			</div>
 		</div>
 		<!--<button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 			Edit XP Values
@@ -71,9 +76,10 @@
 					<input type="number" class="form-control" id="resultCcLoss" placeholder="Not Calculated">
 				</div>
 				<div class="form-group col-md-6">
-					<label for="resultFlLoss">Frontline Losses</label>
+					<label for="resultFlLoss">Frontline Losses *</label>
 					<input type="number" class="form-control" id="resultFlLoss" placeholder="Not Calculated">
 				</div>
+				<small><div class="d-flex justify-content-center">* Frontline calculations do not take into account percentage bonuses for consecutive losses. In reality, the min-max amount of frontlines required will always be weighted slightly more towards the minimum as losing multiple in a row gives stacking reward bonuses in future matches.</div></small>
 			</div>
 		</fieldset>
 		<hr/>

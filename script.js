@@ -1,7 +1,8 @@
 const CC_WIN = 900;
 const CC_LOSS = 700;
 const FL_WIN = 1500;
-const FL_LOSS = 1250;
+const FL_MID = 1250;
+const FL_LOSS = 1000;
 const RANKS = [
 	0,    // 0-1
 	2000, // 1-2
@@ -113,6 +114,7 @@ $('#inputTarget').on('input', () => validateAndCalcResults());
 $('#addCcWin').on('click', () => addXp(CC_WIN));
 $('#addCcLoss').on('click', () => addXp(CC_LOSS));
 $('#addFlWin').on('click', () => addXp(FL_WIN));
+$('#addFlMid').on('click', () => addXp(FL_MID));
 $('#addFlLoss').on('click', () => addXp(FL_LOSS));
 
 let inputRank = localStorage.getItem("inputRank");
