@@ -115,6 +115,8 @@ function setTheme(toTheme) {
 	localStorage.setItem("darkMode", toTheme);
 }
 
+$('#toggleTheme').on('click', () => toggleTheme());
+
 $('form').submit(function (event) {
 	event.preventDefault();
 	calcResults();
@@ -138,12 +140,3 @@ let inputTarget = localStorage.getItem("inputTarget");
 if (inputTarget !== null) $('#inputTarget').val(inputTarget);
 
 validateAndCalcResults();
-
-$('#toggleTheme').on('click', () => toggleTheme());
-
-window.addEventListener('DOMContentLoaded', () => {
-	const useTheme = localStorage.getItem("darkMode");
-	if (useTheme === 'dark') setTheme('dark');
-	else if (useTheme === 'light') setTheme('light');
-	else if (window.matchMedia('(prefers-color-scheme: dark)').matches)  setTheme('dark');
-});
