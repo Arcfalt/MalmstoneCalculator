@@ -93,6 +93,8 @@ function addXp(amount) {
 	}
 	$('#inputExp').val(inputExp);
 	$('#inputRank').val(inputRank);
+	localStorage.setItem("inputRank", inputRank);
+	localStorage.setItem("inputExp", inputExp);
 	calcResults();
 }
 
@@ -102,9 +104,20 @@ function getXpForRank(rank) {
 	return RANKS[rank];
 }
 
+function toggleTheme() {
+	const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+	if (currentTheme === 'dark') setTheme('light');
+	else setTheme('dark');
+}
+
+function setTheme(toTheme) {
+	document.documentElement.setAttribute('data-bs-theme', toTheme);
+	localStorage.setItem("darkMode", toTheme);
+}
+
 $('form').submit(function (event) {
-    event.preventDefault();
-    calcResults();
+	event.preventDefault();
+	calcResults();
 });
 
 $('#inputRank').on('input', () => validateAndCalcResults());
@@ -125,3 +138,12 @@ let inputTarget = localStorage.getItem("inputTarget");
 if (inputTarget !== null) $('#inputTarget').val(inputTarget);
 
 validateAndCalcResults();
+
+$('#toggleTheme').on('click', () => toggleTheme());
+
+window.addEventListener('DOMContentLoaded', () => {
+	const useTheme = localStorage.getItem("darkMode");
+	if (useTheme === 'dark') setTheme('dark');
+	else if (useTheme === 'light') setTheme('light');
+	else if (window.matchMedia('(prefers-color-scheme: dark)').matches)  setTheme('dark');
+});

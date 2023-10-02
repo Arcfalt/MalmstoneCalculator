@@ -6,92 +6,71 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>FFXIV Malmstone PVP XP Calculator</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-		integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
 	<div class="container">
-		<div class="d-flex justify-content-center"><h1>Malmstone Calculator</h1></div>
+		<div class="container text-center mt-2"><h1>Malmstone Calculator</h1></div>
+		<div class="row text-center">
+			<div class="col-md-12"><button type="button" class="btn btn-secondary" id="toggleTheme">Toggle Theme</button></div>
+		</div>
 		<hr/>
-		<form>
-			<div class="form-row">
-				<div class="form-group col-md-6">
-					<label for="inputRank">Current Rank</label>
-					<input type="number" class="form-control" id="inputRank" value = "1">
-				</div>
-				<div class="form-group col-md-6">
-					<label for="inputTarget">Target Rank</label>
-					<input type="number" class="form-control" id="inputTarget" value = "25">
-				</div>
+		<form class="row g-3">
+			<div class="col-md-6">
+				<label for="inputRank" class="form-label">Current Rank</label>
+				<input type="number" class="form-control" id="inputRank" value = "1">
 			</div>
-			<div class="form-group">
-				<label for="inputExp">Current XP to Next Rank</label>
+			<div class="col-md-6">
+				<label for="inputTarget" class="form-label">Target Rank</label>
+				<input type="number" class="form-control" id="inputTarget" value = "25">
+			</div>
+			<div class="col-md-12">
+				<label for="inputExp" class="form-label">Current XP to Next Rank</label>
 				<input type="number" class="form-control" id="inputExp" value = "0">
 			</div>
-		</form>
-		<div class="row">
-			<div class="mx-auto">
+			<div class="col-md-6 text-center">
 				<button type="button" class="btn btn-primary" id="addCcWin">+CC Win</button>
 				<button type="button" class="btn btn-primary" id="addCcLoss">+CC Loss</button>
 			</div>
-			<div class="mx-auto">
+			<div class="col-md-6 text-center">
 				<button type="button" class="btn btn-primary" id="addFlWin">+FL 1st</button>
 				<button type="button" class="btn btn-primary" id="addFlMid">+FL 2nd</button>
 				<button type="button" class="btn btn-primary" id="addFlLoss">+FL 3rd</button>
 			</div>
-		</div>
-		<!--<button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-			Edit XP Values
-		</button>
-		<div class="collapse" id="collapseExample">
-			<div class="form-group">
-				<label for="ccWin">Crystalline Conflict Win</label>
-				<input type="number" class="form-control" id="ccWin">
-			</div>
-			<div class="form-group">
-				<label for="ccLoss">Crystalline Conflict Loss</label>
-				<input type="number" class="form-control" id="ccLoss">
-			</div>
-		</div>-->
+		</form>
 		<hr/>
 		<fieldset disabled>
-			<div class="form-group">
-				<label for="resultXp">XP Required</label>
-				<input type="number" class="form-control" id="resultXp" placeholder="Not Calculated">
-			</div>
-			<div class="form-row">
-				<div class="form-group col-md-6">
-					<label for="resultCcWin">Crystalline Conflict Wins</label>
+			<form class="row g-3">
+				<div class="col-md-12">
+					<label for="resultXp" class="form-label">XP Required</label>
+					<input type="number" class="form-control" id="resultXp" placeholder="Not Calculated">
+				</div>
+				<div class="col-md-6">
+					<label for="resultCcWin" class="form-label">Crystalline Conflict Wins</label>
 					<input type="number" class="form-control" id="resultCcWin" placeholder="Not Calculated">
 				</div>
-				<div class="form-group col-md-6">
-					<label for="resultFlWin">Frontline Wins</label>
+				<div class="col-md-6">
+					<label for="resultFlWin" class="form-label">Frontline Wins</label>
 					<input type="number" class="form-control" id="resultFlWin" placeholder="Not Calculated">
 				</div>
-			</div>
-			<div class="form-row">
-				<div class="form-group col-md-6">
-					<label for="resultCcLoss">Crystalline Conflict Losses</label>
+				<div class="col-md-6">
+					<label for="resultCcLoss" class="form-label">Crystalline Conflict Losses</label>
 					<input type="number" class="form-control" id="resultCcLoss" placeholder="Not Calculated">
 				</div>
-				<div class="form-group col-md-6">
-					<label for="resultFlLoss">Frontline Losses *</label>
+				<div class="col-md-6">
+					<label for="resultFlLoss" class="form-label">Frontline Losses *</label>
 					<input type="number" class="form-control" id="resultFlLoss" placeholder="Not Calculated">
 				</div>
 				<small><div class="d-flex justify-content-center">* Frontline calculations do not take into account percentage bonuses for consecutive losses. In reality, the min-max amount of frontlines required will always be weighted slightly more towards the minimum as losing multiple in a row gives stacking reward bonuses in future matches.</div></small>
-			</div>
+			</form>
 		</fieldset>
 		<hr/>
-		<div class="d-flex justify-content-center">Made by Spaghetti</div>
-		<div class="d-flex justify-content-center"><a href="https://github.com/Arcfalt/MalmstoneCalculator">View Source</a></div>
+		<div class="container text-center">Made by Spaghetti</div>
+		<div class="container text-center"><a href="https://github.com/Arcfalt/MalmstoneCalculator">View Source</a></div>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	<script src="script.js"></script>
 </body>
 
