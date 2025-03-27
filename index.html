@@ -39,6 +39,13 @@
 				<button type="button" class="btn btn-primary" id="addFlMid">+FL 2nd</button>
 				<button type="button" class="btn btn-primary" id="addFlLoss">+FL 3rd</button>
 			</div>
+			<div class="col-md-6 text-center">
+				<button type="button" class="btn btn-primary" id="addRwWin">+RW Win</button>
+				<button type="button" class="btn btn-primary" id="addRwLoss">+RW Loss</button>
+			</div>
+			<div class="col-md-6 text-center">
+				<button type="button" class="btn btn-primary" id="addFlDaily">+FL Roulette Bonus</button>
+			</div>
 		</form>
 		<hr/>
 		<fieldset disabled>
@@ -47,21 +54,29 @@
 					<label for="resultXp" class="form-label">XP Required</label>
 					<input type="number" class="form-control" id="resultXp" placeholder="Not Calculated">
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<label for="resultCcWin" class="form-label">Crystalline Conflict Wins</label>
 					<input type="number" class="form-control" id="resultCcWin" placeholder="Not Calculated">
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<label for="resultFlWin" class="form-label">Frontline Wins</label>
 					<input type="number" class="form-control" id="resultFlWin" placeholder="Not Calculated">
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-4">
+					<label for="resultRwWin" class="form-label">Rival Wings Wins</label>
+					<input type="number" class="form-control" id="resultRwWin" placeholder="Not Calculated">
+				</div>
+				<div class="col-md-4">
 					<label for="resultCcLoss" class="form-label">Crystalline Conflict Losses</label>
 					<input type="number" class="form-control" id="resultCcLoss" placeholder="Not Calculated">
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<label for="resultFlLoss" class="form-label">Frontline Losses *</label>
 					<input type="number" class="form-control" id="resultFlLoss" placeholder="Not Calculated">
+				</div>
+				<div class="col-md-4">
+					<label for="resultRwLoss" class="form-label">Rival Wings Losses</label>
+					<input type="number" class="form-control" id="resultRwLoss" placeholder="Not Calculated">
 				</div>
 				<small><div class="d-flex justify-content-center">* Frontline calculations do not take into account percentage bonuses for consecutive losses. In reality, the min-max amount of frontlines required will always be weighted slightly more towards the minimum as losing multiple in a row gives stacking reward bonuses in future matches.</div></small>
 			</form>
