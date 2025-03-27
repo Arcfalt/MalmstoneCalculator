@@ -3,6 +3,9 @@ const CC_LOSS = 700;
 const FL_WIN = 1500;
 const FL_MID = 1250;
 const FL_LOSS = 1000;
+const FL_DAILY = 1500;
+const RW_WIN = 1250;
+const RW_LOSS = 750;
 const RANKS = [
 	0,    // 0-1
 	2000, // 1-2
@@ -77,6 +80,8 @@ function calcResults() {
 	$('#resultCcLoss').val(Math.ceil(xp / CC_LOSS));
 	$('#resultFlWin').val(Math.ceil(xp / FL_WIN));
 	$('#resultFlLoss').val(Math.ceil(xp / FL_LOSS));
+	$('#resultRwWin').val(Math.ceil(xp / RW_WIN));
+	$('#resultRwLoss').val(Math.ceil(xp / RW_LOSS));
 }
 
 function addXp(amount) {
@@ -131,6 +136,9 @@ $('#addCcLoss').on('click', () => addXp(CC_LOSS));
 $('#addFlWin').on('click', () => addXp(FL_WIN));
 $('#addFlMid').on('click', () => addXp(FL_MID));
 $('#addFlLoss').on('click', () => addXp(FL_LOSS));
+$('#addFlDaily').on('click', () => addXp(FL_DAILY));
+$('#addRwWin').on('click', () => addXp(RW_WIN));
+$('#addRwLoss').on('click', () => addXp(RW_LOSS));
 
 let inputRank = localStorage.getItem("inputRank");
 if (inputRank !== null) $('#inputRank').val(inputRank);
