@@ -50,15 +50,24 @@ function getTotalXpToLevel(toLevel) {
 }
 
 function validateAndCalcResults() {
-	const inputRank = parseInt($('#inputRank').val());
-	if (inputRank < 1) $('#inputRank').val(1);
-	else if (inputRank > 9999) $('#inputRank').val(9999);
-	const inputExp = parseInt($('#inputExp').val());
-	if (inputExp < 0) $('#inputExp').val(0);
-	else if (inputExp > 20000) $('#inputExp').val(20000);
-	const inputTarget = parseInt($('#inputTarget').val());
-	if (inputTarget < 1) $('#inputTarget').val(1);
-	else if (inputTarget > 9999) $('#inputTarget').val(9999);
+	const rRaw = parseInt($('#inputRank').val());
+	let inputRank = isNaN(rRaw) ? 1 : rRaw;
+	if (inputRank < 1) inputRank = 1;
+	else if (inputRank > 9999) inputRank = 9999;
+	$('#inputRank').val(inputRank);
+
+	const eRaw = parseInt($('#inputExp').val());
+	let inputExp = isNaN(eRaw) ? 0 : eRaw;
+	if (inputExp < 0) inputExp = 0;
+	else if (inputExp > 20000) inputExp = 20000;
+	$('#inputExp').val(inputExp);
+
+	const tRaw = parseInt($('#inputTarget').val());
+	let inputTarget = isNaN(tRaw) ? 1 : tRaw;
+	if (inputTarget < 1) inputTarget = 1;
+	else if (inputTarget > 9999) inputTarget = 9999;
+	$('#inputTarget').val(inputTarget);
+
 	localStorage.setItem("inputRank", inputRank);
 	localStorage.setItem("inputExp", inputExp);
 	localStorage.setItem("inputTarget", inputTarget);
@@ -74,7 +83,7 @@ function calcResults() {
 	if (isNaN(inputTarget)) inputTarget = 1;
 	const fromXp = getTotalXpToLevel(inputRank) + inputExp;
 	const toXp = getTotalXpToLevel(inputTarget);
-	const xp = toXp - fromXp;
+	const xp = Math.max(0, toXp - fromXp);
 	$('#resultXp').val(xp);
 	$('#resultCcWin').val(Math.ceil(xp / CC_WIN));
 	$('#resultCcLoss').val(Math.ceil(xp / CC_LOSS));
@@ -92,7 +101,7 @@ function addXp(amount) {
 	if (inputExp < 0) $('#inputExp').val(0);
 	else if (inputExp > 20000) $('#inputExp').val(20000);
 	inputExp += amount;
-	while (getXpForRank(inputRank) < inputExp) {
+	while (getXpForRank(inputRank) <= inputExp) {
 		inputExp -= getXpForRank(inputRank);
 		inputRank++;
 	}
@@ -115,10 +124,7 @@ function toggleTheme() {
 	else setTheme('dark');
 }
 
-function setTheme(toTheme) {
-	document.documentElement.setAttribute('data-bs-theme', toTheme);
-	localStorage.setItem("darkMode", toTheme);
-}
+// setTheme is provided by themer.js
 
 $('#toggleTheme').on('click', () => toggleTheme());
 
