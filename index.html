@@ -6,6 +6,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>FFXIV Malmstone PVP XP Calculator</title>
+	<script>
+		// Set theme pre-paint to avoid flicker
+		try {
+			const stored = localStorage.getItem('darkMode');
+			const theme = (stored === 'dark' || stored === 'light')
+				? stored
+				: (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+			document.documentElement.setAttribute('data-bs-theme', theme);
+		} catch (e) { /* no-op */ }
+	</script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
@@ -20,15 +30,15 @@
 		<form class="row g-3">
 			<div class="col-md-6">
 				<label for="inputRank" class="form-label">Current Rank</label>
-				<input type="number" class="form-control" id="inputRank" value = "1">
+				<input type="number" class="form-control" id="inputRank" value="1" min="1" max="9999" step="1">
 			</div>
 			<div class="col-md-6">
 				<label for="inputTarget" class="form-label">Target Rank</label>
-				<input type="number" class="form-control" id="inputTarget" value = "25">
+				<input type="number" class="form-control" id="inputTarget" value="25" min="1" max="9999" step="1">
 			</div>
 			<div class="col-md-12">
 				<label for="inputExp" class="form-label">Current XP to Next Rank</label>
-				<input type="number" class="form-control" id="inputExp" value = "0">
+				<input type="number" class="form-control" id="inputExp" value="0" min="0" max="20000" step="1">
 			</div>
 			<div class="col-md-6 text-center">
 				<button type="button" class="btn btn-primary" id="addCcWin">+CC Win</button>
@@ -48,39 +58,39 @@
 			</div>
 		</form>
 		<hr/>
-		<fieldset disabled>
-			<form class="row g-3">
-				<div class="col-md-12">
-					<label for="resultXp" class="form-label">XP Required</label>
-					<input type="number" class="form-control" id="resultXp" placeholder="Not Calculated">
-				</div>
-				<div class="col-md-4">
-					<label for="resultCcWin" class="form-label">Crystalline Conflict Wins</label>
-					<input type="number" class="form-control" id="resultCcWin" placeholder="Not Calculated">
-				</div>
-				<div class="col-md-4">
-					<label for="resultFlWin" class="form-label">Frontline Wins</label>
-					<input type="number" class="form-control" id="resultFlWin" placeholder="Not Calculated">
-				</div>
-				<div class="col-md-4">
-					<label for="resultRwWin" class="form-label">Rival Wings Wins</label>
-					<input type="number" class="form-control" id="resultRwWin" placeholder="Not Calculated">
-				</div>
-				<div class="col-md-4">
-					<label for="resultCcLoss" class="form-label">Crystalline Conflict Losses</label>
-					<input type="number" class="form-control" id="resultCcLoss" placeholder="Not Calculated">
-				</div>
-				<div class="col-md-4">
-					<label for="resultFlLoss" class="form-label">Frontline Losses *</label>
-					<input type="number" class="form-control" id="resultFlLoss" placeholder="Not Calculated">
-				</div>
-				<div class="col-md-4">
-					<label for="resultRwLoss" class="form-label">Rival Wings Losses</label>
-					<input type="number" class="form-control" id="resultRwLoss" placeholder="Not Calculated">
-				</div>
-				<small><div class="d-flex justify-content-center">* Frontline calculations do not take into account percentage bonuses for consecutive losses. In reality, the min-max amount of frontlines required will always be weighted slightly more towards the minimum as losing multiple in a row gives stacking reward bonuses in future matches.</div></small>
-			</form>
-		</fieldset>
+		<div class="row g-3" aria-live="polite">
+			<div class="col-md-12">
+				<label for="resultXp" class="form-label">XP Required</label>
+				<input type="number" class="form-control" id="resultXp" placeholder="Not Calculated" readonly>
+			</div>
+			<div class="col-md-4">
+				<label for="resultCcWin" class="form-label">Crystalline Conflict Wins</label>
+				<input type="number" class="form-control" id="resultCcWin" placeholder="Not Calculated" readonly>
+			</div>
+			<div class="col-md-4">
+				<label for="resultFlWin" class="form-label">Frontline Wins</label>
+				<input type="number" class="form-control" id="resultFlWin" placeholder="Not Calculated" readonly>
+			</div>
+			<div class="col-md-4">
+				<label for="resultRwWin" class="form-label">Rival Wings Wins</label>
+				<input type="number" class="form-control" id="resultRwWin" placeholder="Not Calculated" readonly>
+			</div>
+			<div class="col-md-4">
+				<label for="resultCcLoss" class="form-label">Crystalline Conflict Losses</label>
+				<input type="number" class="form-control" id="resultCcLoss" placeholder="Not Calculated" readonly>
+			</div>
+			<div class="col-md-4">
+				<label for="resultFlLoss" class="form-label" id="flLossLabel">Frontline Losses *</label>
+				<input type="number" class="form-control" id="resultFlLoss" placeholder="Not Calculated" readonly aria-describedby="flLossHelp">
+			</div>
+			<div class="col-md-4">
+				<label for="resultRwLoss" class="form-label">Rival Wings Losses</label>
+				<input type="number" class="form-control" id="resultRwLoss" placeholder="Not Calculated" readonly>
+			</div>
+			<div class="col-md-12" id="flLossHelp">
+				<small class="d-flex justify-content-center">* Frontline calculations do not take into account percentage bonuses for consecutive losses. In reality, the min-max amount of frontlines required will always be weighted slightly more towards the minimum as losing multiple in a row gives stacking reward bonuses in future matches.</small>
+			</div>
+		</div>
 		<hr/>
 		<div class="container text-center">Made by Spaghetti</div>
 		<div class="container text-center"><a href="https://github.com/Arcfalt/MalmstoneCalculator">View Source</a></div>
